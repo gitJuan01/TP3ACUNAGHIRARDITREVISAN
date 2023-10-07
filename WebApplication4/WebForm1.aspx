@@ -29,6 +29,30 @@
         <asp:Parameter Name="ID" Type="Int32" />
     </DeleteParameters>
 </asp:SqlDataSource>
+ <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" EnableModelValidation="True" DataKeyNames="id">
+            <Columns>
+                <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
+                <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                <asp:BoundField DataField="IdCuenta" HeaderText="IdCuenta" SortExpression="IdCuenta" />
+                <asp:BoundField DataField="Monto" HeaderText="Monto" SortExpression="Monto" />
+                <asp:CheckBoxField DataField="Tipo" HeaderText="Tipo" SortExpression="Tipo" />
+            </Columns>
+        </asp:GridView>
+
+
+
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:hola %>" SelectCommand="select * from RegistroContable" UpdateCommand="UPDATE RegistroContable SET IdCuenta = @IdCuenta, Monto = @Monto, Tipo = @Tipo where [ID] = @id" DeleteCommand="DELETE FROM RegistroContable where [ID] = @id">
+            <DeleteParameters>
+                <asp:Parameter Name="id" />
+            </DeleteParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="IdCuenta" />
+                <asp:Parameter Name="Monto" />
+                <asp:Parameter Name="Tipo" />
+                <asp:Parameter Name="id" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+
 
     </div>
     </form>
